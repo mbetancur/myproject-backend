@@ -1,0 +1,29 @@
+{
+  "name": "myproject-backend",
+  "version": "1.0.0",
+  "description": "this is the backend of my personal project",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mbetancur/myproject-backend.git"
+  },
+  "keywords": [
+    "backend"
+  ],
+  "author": "MateoB",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mbetancur/myproject-backend/issues"
+  },
+  "homepage": "https://github.com/mbetancur/myproject-backend#readme",
+  "dependencies": {
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.1",
+    "nodemon": "^1.19.2"
+  }
+}
