@@ -1,19 +1,20 @@
 require('dotenv').config();
-const port = process.env.PORT;
+const PORT = process.env.PORT;
 const request = require('supertest');
-const app = require('../server');
-const mongoDB = require('../database');
+const app = require('../app');
+
+let server = `http://localhost:${PORT}`;
 
 describe('Test the root path', () => {
     beforeAll(() => {
-        mongoDB.connect();
+        app.listen();
     });
 
-    afterAll((done) => {
-        mongoDB.disconnect(done);
+    afterAll(async (done) => {
+        await app.close(done);
     });
 
     test('It should response the GET method', () => {
-        return request(`http://localhost:${port}`).get('/').expect(200);
+        return request(server).get('/').expect(200);
     });
 });

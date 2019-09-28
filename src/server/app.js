@@ -2,17 +2,23 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 
-const port = process.env.PORT;
+const PORT = process.env.PORT;
+let server;
 
 app.get('/', (req, res) => {
-    res.status(200).send('Hello World!');
+    res.status(200).send('Hello NodeJsWorld!');
 })
 
 module.exports = {
     app,
     listen: async () => {
-        await app.listen(port, () => {
-            console.log(`Listening port ${port}`);
+        server = await app.listen(PORT, () => {
+            console.log(`Listening port ${PORT}`);
+        });
+    },
+    close: async () => {
+        await server.close(() => {
+            console.log("Closed connection");
         });
     }
 };
