@@ -3,10 +3,25 @@ const mongoose = require('mongoose');
 
 const MONGO_URI = process.env.DEV_DB;
 
-mongoose.Promise = global.Promise;
+// mongoose.Promise = global.Promise;
 
-mongoose.connect(MONGO_URI).then(() => {
-    console.log("Connected to mLab database");
-}, err => {
-    console.log(err.stack);
-});
+// mongoose.connect(MONGO_URI).then(() => {
+//     console.log("Connected to mLab database");
+// }, err => {
+//     console.log(err.stack);
+// });
+
+module.exports = {
+    mongoose,
+    connect: () => {
+        mongoose.Promise = Promise;
+        mongoose.connect(MONGO_URI).then(() => {
+            console.log("Connected to mLab database");
+        }, err => {
+            console.log(err.stack);
+        });
+    },
+    disconnect: (done) => {
+        mongoose.disconnect(done);
+    },
+};
