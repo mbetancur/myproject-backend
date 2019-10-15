@@ -1,5 +1,5 @@
-const app = require('./app');
-const database = require('./database');
+const app = require('./app')
+const database = require('./database')
 
-app.listen();
-database.connect();
+app.listen()
+database.connect()
